@@ -1,0 +1,149 @@
+---
+title: "Ass2"
+author: "Lalitgoud"
+date: "1/27/2019"
+output: html_document
+---
+
+```{r}
+#1.sequence
+
+#printing values from 1-12 in sequence by 1.
+seq(1, 12, by = 1)
+
+#printing name of months
+for(i in seq(month.name))
+{
+  print( month.name[i])
+}
+
+#using seq function 
+a <- c("jan","feb","march","april","may","june","july","aug","sep","oct","nov","dec")
+u <- a[c(6:12)]
+print(u)
+
+seq(2)
+
+seq(as.Date("1995/1/11"),as.Date("2020/1/11"),length.out = 5)
+
+```
+
+
+```{r}
+
+#2.vectors
+
+a0<-c("-------------","-----------")
+names(a0)<-c("Name","   Student Marks")
+a1<-c("    Bharat","    90")
+a2<-c("    Bhavni","    95")
+a3<-c("    Lalit","     92")
+a4<-c("    Nikhil","    89")
+a5<-c("    Priya","     91")
+
+a0
+a1
+a2
+a3
+a4
+a5
+classaverage<-(as.numeric(a1[2])+as.numeric(a2[2])+as.numeric(a3[2])+as.numeric(a4[2])+as.numeric(a5[2]))/5
+sp<-c("---------------------------")
+sp
+pr<-c("This class avgerage is:- ",classaverage)
+pr
+classmarks<-c(as.numeric(a1[2]), as.numeric(a2[2]), as.numeric(a3[2]), as.numeric(a4[2]), as.numeric(a5[2]))
+
+
+prclasshighest<-c("The highest markers obtained in this course is: ",max(classmarks))
+prclasshighest
+prclassmin<-c("The class least marks obtained in this course is:",min(classmarks))
+prclassmin
+
+```
+
+```{r}
+#3.Missing Values
+students<-c("bhavani","lalith","priya","pooja","bharath","nikhil")
+Gender<-c("F","M","F","F","M","M")
+marks<-c(90,92,95,90,97,100)
+dt<-data.frame(students,Gender,marks)
+dt
+students<-c("bhavani","lalith","priya","pooja",NA,"nikhil")
+Gender<-c("F","M",NA,"F","M","M")
+marks<-c(90,92,95,90,97,NA)
+dt<-data.frame(students,Gender,marks)
+dt
+na.omit(dt)
+a<-which(is.na(marks))
+which(is.array(a))
+
+```
+
+
+```{r}
+#4.subsetting vectors
+
+a<-c("Bhavani","Lalit","Priya","Bharat","Nikhil")
+a0<-a[2]
+a0
+Age<-c(22,23,23,22,24,30)
+#maximum  and minimum
+a1<-which.max(Age)
+Age[a1]
+a1<-which.min(Age)
+Age[a1]
+print(a[1:4])
+#using negative numbers and removing 
+a[-2]
+#duplicating indexes
+a[c(1,1,1,2)]
+a[-c(2,3)]
+#using logical vectors
+L<-c(TRUE,TRUE,FALSE,FALSE)
+a[L]
+#referencing names to their objects
+setNames( 1:4, c("95", "92", "91","90") )
+#subsetting lists
+count<-as.list(1:10)
+count[1:5]
+class(count)
+
+```
+
+
+```{r}
+#5.dataframes
+
+Rank <- c(1, 2, 3,4,5 )
+Names<-c("Bhavani","Lalit","Bharat","Priya","Nikhil")
+Marks <-c(95, 92, 91,90,89 )
+datafr <-data.frame ( Rank, Names, Marks )   
+datafr
+
+#matrix
+
+pr = matrix (c("Bhavani","95","Lalit","92","Bharat","91","Priya","90","Nikhil","89"), nrow =5, ncol =2, byrow = TRUE)   
+pr
+print("                                                             ")
+print("-------------------------------------------------------------")
+print("                                                             ")
+
+pr1 = matrix (c("Bhavani","95","Lalit","92","Bharat","91","Priya","90","Nikhil","89"), nrow =2, ncol =5, byrow = FALSE)     
+pr1
+
+mat1<-matrix(c(2,3,4,5),nrow=2)
+mat2<-matrix(c(5,6,7,8),nrow=2)
+
+
+print("                                                              ")
+print("----------------multiply 2 matrices---------------------------")
+print("                                                              ")
+print(mat1*mat2)
+```
+
+
+
+
+
+
