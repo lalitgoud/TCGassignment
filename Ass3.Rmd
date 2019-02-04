@@ -1,0 +1,88 @@
+---
+title: "Tcg3"
+author: "Lalitgoud"
+date: "2/3/2019"
+output: html_document
+---
+```{r 1.importing csv files into R}
+myData<-read.csv("Grades.csv", TRUE, "," )
+myData
+myData2<-read.csv("oscars.csv", TRUE, "," )
+myData2
+```
+
+
+```{r 2.vectors creation}
+
+#subjects
+vec1<-data.frame(myData[,3],myData[,4],myData[,5])
+vec1
+
+#total
+vec2<-data.frame(myData[,6])
+vec2
+
+```
+
+```{r 3. using for loop}
+total<-0
+len<-length(vec1[,1])
+
+#saving data from data frame into vector
+ data<-vec1[,1]
+ 
+# for loop
+
+ for(i in seq_along(data)){
+   
+   total<-total+data[i]
+   
+ }
+   mean<-total/len
+   print(mean)
+   
+  
+   
+
+```
+
+```{r 4. defining own function}
+
+ #function creation
+   
+   myFunction<-function(myMethod){
+     
+    len<-length(myMethod)
+    total<-0
+    
+     for (i in seq_along(myMethod))
+     {
+    
+       total<-total+myMethod[i]
+      
+      }
+     
+   mean<-total/len
+   print(mean)
+   
+   }
+
+c<-c(data)
+   myFunction(c)
+   
+```
+
+```{r 5.lapply function}
+   
+#Using lapply function 
+   
+vec3<-data.frame(myData2[,1],myData2[,5],myData2[,7])
+vec3
+vect3List<-list(x=vec3[,1],y=vec3[,2])
+vect3List
+# calculated for reference
+mean(vect3List$y)
+lapply(vect3List,myFunction)
+```
+
+
