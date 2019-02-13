@@ -1,0 +1,25 @@
+---
+title: "Ass4"
+author: "Lalitgoud"
+date: "2/12/2019"
+output: html_document
+---
+
+```{r }
+
+install.packages(rvest)
+install.packages(XML)
+
+infoOfSnakes<-("https://en.wikipedia.org/wiki/List_of_dangerous_snakes")
+infoOfSnakes1<-read_html(infoOfSnakes)
+infoOfSnakes1
+infoOfSnakes2<-infoOfSnakes1%>% html_nodes("table") %>% .[[2]] %>% html_table(fill=TRUE)
+infoOfSnakes2
+infoOfSnakes3<-data.frame(infoOfSnakes2)
+infoOfSnakes3
+infoOfSnakes4<-head(infoOfSnakes3)
+infoOfSnakes4
+```
+
+
+
