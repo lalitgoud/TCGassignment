@@ -1,0 +1,17 @@
+---
+Title :"Assignment7"
+Author:"Lalit Goud Palsam"
+Date:"3/13/2019"
+---
+
+```{r}
+movie<-("https://www.the-numbers.com/market/")
+review<-read_html(movie)
+review1<-review %>%html_nodes("table") %>% .[2]%>% html_table(fill=TRUE)
+review2<-data.frame(review1)
+review2
+
+#scatter plot 
+ggplot(review2,aes(x=Year,y=Total.Major.6))+geom_point()+geom_smooth(method=lm)
+```
+
