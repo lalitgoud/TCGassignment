@@ -1,0 +1,29 @@
+```{r}
+library(rvest)
+library(ggplot2)
+
+url<-read_html("https://en.wikipedia.org/wiki/Religion_in_India")
+url<-url%>%
+  html_nodes("table")%>% .[3]%>%
+  html_table(fill=TRUE)
+url<-data.frame(url)
+#url
+str(url)
+url$sexratio<-url$Sex.ratio..2011..total..62.
+
+url$population<-sub("%","",url$Population..2011..)
+url$population<-as.numeric(url$population)
+url
+a<-ggplot(url,aes(x=population,y=sexratio))
+a<-a+geom_point()
+a
+
+par(mar=rep(0.2,4))
+kmeansCluster<-kmeans(url[,c(11,10)],centers = 2)
+names(kmeansCluster)
+url$cluster<-as.factor(kmeansCluster$cluster)
+
+plot(url$population,url$sexratio,col=url$cluster,pch=19,cex=2)
+points(kmeansCluster$centers,col=1:2,pch=3,cex=3,lwd=3)
+```
+
